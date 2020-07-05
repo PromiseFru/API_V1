@@ -4,7 +4,7 @@ const router = express.Router();
 let smsdb = require("../db");
 
 // get all SMS messages
-router.get("/:version_number/deku/user/:id/sms/all", async (req, res) => {
+router.get("/sms/all", async (req, res) => {
     let { id } = req.params;
     let { version_number } = req.params;
     id = Number(id);
@@ -21,3 +21,5 @@ router.get("/:version_number/deku/user/:id/sms/all", async (req, res) => {
       });
     }
   });
+
+  module.exports =router;

@@ -12,6 +12,9 @@ app.use(cors());
 // use body-parser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+// import and use SMS route
+const smsRouter = require('./routes/sms');
+app.use('/', smsRouter);
 // listen to defined port
 app.listen(port, function() {
     console.log("Runnning on " + port);
