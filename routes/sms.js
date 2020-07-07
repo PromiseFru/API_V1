@@ -11,7 +11,7 @@ router.get("/:version_number/deku/user/:id/sms/all", async (req, res) => {
     version_number = Number(version_number);
 
     try {
-      let sms = smsdb.find(sms => sms._id === id && sms.version_number === version_number);
+      let sms = smsdb.filter(sms => sms._id === id && sms.version_number === version_number);
       res.status(200).json({
         data: sms
       });
