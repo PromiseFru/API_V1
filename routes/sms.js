@@ -5,10 +5,9 @@ let smsdb = require("../db");
 
 // get all SMS messages
 router.get("/:version_number/deku/user/:id/sms/all", async (req, res) => {
-    let { id } = req.params;
-    let { version_number } = req.params;
-    id = Number(id);
-    version_number = Number(version_number);
+  let { id, version_number } = req.params;
+  id = Number(id);
+  version_number = Number(version_number);
 
     try {
       let sms = smsdb.filter(sms => sms._id === id && sms.version_number === version_number);
@@ -61,6 +60,11 @@ router.get("/:version_number/deku/user/:id/sms/:received", async (req, res) => {
         err
       });
     }
+  });
+
+// send sms
+router.post("/:version_number/deku/user/:id/sms", async (req, res) => {
+    res.send('message sent')
   });
 
   module.exports = router;
